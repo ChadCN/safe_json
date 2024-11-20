@@ -1,11 +1,9 @@
-import 'package:safe_json/src/ansi_color.dart';
 import 'package:safe_json/src/pretty_printer.dart';
 import 'package:safe_json/src/safe_json_library.dart';
 import 'package:safe_json/src/stack_trace_formatter.dart';
 
 /// JsonHelper is an extension on Map<dynamic, dynamic> that provides safe methods to parse json values.
 extension JsonHelper on Map<dynamic, dynamic> {
-
   /// Safely parse a json value to an integer.
   int safeInt(String key, {int defaultValue = 0}) {
     try {
@@ -148,14 +146,17 @@ extension JsonHelper on Map<dynamic, dynamic> {
     }
   }
 
-  _safeJsonPrint(String key, Object error, StackTrace stackTrace, dynamic defaultValue) {
+  _safeJsonPrint(
+      String key, Object error, StackTrace stackTrace, dynamic defaultValue) {
     if (SafeJsonLibrary.skipLog) return;
     print(
-      PrettyPrinter.prettyPrintLog(
-        '⚠️ json[${AnsiColor.green('\'$key\'')}] return default value $defaultValue',
-        error.toString().trim(),
-        StackTraceFormatter.formatStackTrace(stackTrace),
-      ),
+      '\n' +
+          PrettyPrinter.prettyPrintLog(
+            '⚠️ json[\'$key\'] return default value $defaultValue',
+            error.toString().trim(),
+            StackTraceFormatter.formatStackTrace(stackTrace),
+          ) +
+          '\n',
     );
   }
 }

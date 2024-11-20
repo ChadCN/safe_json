@@ -10,10 +10,10 @@ class User {
 
   User(
       {required this.name,
-        required this.age,
-        required this.school,
-        required this.articles,
-        required this.vehicles});
+      required this.age,
+      required this.school,
+      required this.articles,
+      required this.vehicles});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(

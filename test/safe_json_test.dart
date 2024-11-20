@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:safe_json/safe_json.dart';
 
 void main() {
+  SafeJsonLibrary.showFullStacktrace = false;
   group('Test safeInt function', () {
     test('int number should be safely decoded', () {
       final json = <String, dynamic>{'key': 1};
@@ -179,12 +180,20 @@ void main() {
 
   group('Test safeList function', () {
     test('List should be safely decoded', () {
-      final json = <String, dynamic>{'key': [1, 2, 3]};
+      final json = <String, dynamic>{
+        'key': [1, 2, 3]
+      };
       expect(json.safeList('key'), [1, 2, 3]);
     });
 
     test('List should be safely decoded with itemParse', () {
-      final json = <String, dynamic>{'key': [{'id': 1}, {'id': 2}, {'id': 3}]};
+      final json = <String, dynamic>{
+        'key': [
+          {'id': 1},
+          {'id': 2},
+          {'id': 3}
+        ]
+      };
       expect(json.safeList('key', itemParse: (json) => json['id']), [1, 2, 3]);
     });
 
@@ -206,7 +215,9 @@ void main() {
 
   group('Test safeMap function', () {
     test('Map should be safely decoded', () {
-      final json = <String, dynamic>{'key': {'id': 1}};
+      final json = <String, dynamic>{
+        'key': {'id': 1}
+      };
       expect(json.safeMap('key'), {'id': 1});
     });
 
@@ -247,5 +258,4 @@ void main() {
       expect(json.exist('key'), false);
     });
   });
-
 }

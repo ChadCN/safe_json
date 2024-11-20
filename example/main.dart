@@ -1,5 +1,3 @@
-import 'package:safe_json/safe_json.dart';
-
 import 'models/user.dart';
 
 void main() {
@@ -23,4 +21,3 @@ void main() {
   print(user.articles); // [article1, article2]
   print(user.vehicles); // [Toyota Camry, Honda Accord]
 }
-
