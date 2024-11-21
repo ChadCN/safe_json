@@ -25,3 +25,7 @@
 ## 1.0.6
 
 * able to set stacktrace count showing in console
+
+## 1.0.7
+
+* Fix bug
