@@ -37,5 +37,5 @@ Add `safe_json` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  safe_json: ^1.0.6
+  safe_json: ^1.0.7
 ```

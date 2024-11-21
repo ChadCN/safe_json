@@ -58,7 +58,9 @@ class StackTraceFormatter {
       if (found && count == 0) {
         break;
       }
-      found = _findFileStacktraceLine(line);
+      if (!found) {
+        found = _findFileStacktraceLine(line);
+      }
     }
     return result;
   }
