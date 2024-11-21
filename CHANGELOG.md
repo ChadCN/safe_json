@@ -30,6 +30,6 @@
 
 * Fix bug
 
-## 1.0.9
+## 1.0.10
 
 * Update README.md and fix workflow
