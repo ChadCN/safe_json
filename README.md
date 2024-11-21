@@ -22,6 +22,9 @@ final vehicles = json.safeList<Vehicle>('vehicles', itemParse: (json) => Vehicle
 
 //set to true if want to disable error logging (usually in production)
 SafeJsonLibrary.skipLog = true; 
+
+//set the stacktrace count showing in console
+SafeJsonLibrary.stackTraceCount = 1; 
 ```
 
 ## Console Logs
@@ -34,5 +37,5 @@ Add `safe_json` to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  safe_json: ^1.0.5
+  safe_json: ^1.0.6
 ```

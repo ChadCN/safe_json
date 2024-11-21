@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:safe_json/safe_json.dart';
 
 void main() {
-  SafeJsonLibrary.showFullStacktrace = false;
+  SafeJsonLibrary.stacktraceCount = 2;
   group('Test safeInt function', () {
     test('int number should be safely decoded', () {
       final json = <String, dynamic>{'key': 1};

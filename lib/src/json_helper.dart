@@ -149,14 +149,24 @@ extension JsonHelper on Map<dynamic, dynamic> {
   _safeJsonPrint(
       String key, Object error, StackTrace stackTrace, dynamic defaultValue) {
     if (SafeJsonLibrary.skipLog) return;
-    print(
-      '\n' +
-          PrettyPrinter.prettyPrintLog(
-            '⚠️ json[\'$key\'] return default value $defaultValue',
-            error.toString().trim(),
-            StackTraceFormatter.formatStackTrace(stackTrace),
-          ) +
-          '\n',
-    );
+    final text = '\n' +
+        PrettyPrinter.prettyPrintLog(
+          '⚠️ json[\'$key\'] return default value $defaultValue',
+          error.toString().trim(),
+          StackTraceFormatter.formatStackTrace(stackTrace),
+        ) +
+        '\n';
+
+    final pattern = new RegExp('.{1,800}');
+    pattern.allMatches(text).forEach((match) => print(match.group(0)));
+    // print(
+    //   '\n' +
+    //       PrettyPrinter.prettyPrintLog(
+    //         '⚠️ json[\'$key\'] return default value $defaultValue',
+    //         error.toString().trim(),
+    //         StackTraceFormatter.formatStackTrace(stackTrace),
+    //       ) +
+    //       '\n',
+    // );
   }
 }

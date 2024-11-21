@@ -25,9 +25,7 @@ class StackTraceFormatter {
     if (formatted.isEmpty) {
       return null;
     } else {
-      return SafeJsonLibrary.showFullStacktrace
-          ? formatted.join('\n')
-          : _oneStacktrace(formatted);
+      return _matchStacktraceCount(formatted);
     }
   }
 
@@ -44,12 +42,20 @@ class StackTraceFormatter {
     return line.contains('json_helper.dart');
   }
 
-  static String _oneStacktrace(List<String> lines) {
+  static String _matchStacktraceCount(List<String> lines) {
+    int count = SafeJsonLibrary.stacktraceCount;
     bool found = false;
     String result = '';
     for (var line in lines) {
-      if (found) {
-        result = line;
+      if (found && count > 0) {
+        if (result == '') {
+          result = line;
+        } else {
+          result += '\n$line';
+        }
+        count--;
+      }
+      if (found && count == 0) {
         break;
       }
       found = _findFileStacktraceLine(line);

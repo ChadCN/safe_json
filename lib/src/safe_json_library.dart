@@ -3,5 +3,5 @@ class SafeJsonLibrary {
   static bool skipLog = false;
 
   /// Set to true to show full stacktrace
-  static bool showFullStacktrace = false;
+  static int stacktraceCount = 2;
 }
