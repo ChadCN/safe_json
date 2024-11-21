@@ -6,12 +6,8 @@ repository: https://github.com/ChadCN/safe_json
 environment:
   sdk: ">=2.17.0 <4.0.0"
 
-dependencies:
-  flutter:
-    sdk: flutter
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  test: ^1.16.8
 
 platforms:
   android:

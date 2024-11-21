@@ -1,5 +1,5 @@
-import 'package:flutter_test/flutter_test.dart';
 import 'package:safe_json/safe_json.dart';
+import 'package:test/test.dart';
 
 void main() {
   SafeJsonLibrary.stacktraceCount = 5;
