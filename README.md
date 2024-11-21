@@ -1,4 +1,7 @@
 # safe_json
+
+[![pub package](https://img.shields.io/pub/v/safe_json.svg)](https://pub.dev/packages/safe_json)
+[![Code size](https://img.shields.io/github/languages/code-size/ChadCN/safe_json?logo=github&logoColor=white)](https://github.com/ChadCN/safe_json)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ChadCN/safe_json?tab=MIT-1-ov-file#)
 
 Small, easy to use null safety json decoding library. The primary goal of this library is to find out bugs in the early stages of development when parsing JSON values. 

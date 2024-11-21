@@ -29,3 +29,7 @@
 ## 1.0.7
 
 * Fix bug
+
+## 1.0.9
+
+* Update README.md and fix workflow
