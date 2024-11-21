@@ -1,6 +1,7 @@
 # safe_json
 
 [![pub package](https://img.shields.io/pub/v/safe_json.svg)](https://pub.dev/packages/safe_json)
+[![CI](https://img.shields.io/github/actions/workflow/status/ChadCN/safe_json/publish.yml?logo=github-actions&logoColor=white)](https://github.com/ChadCN/safe_json/actions)
 [![Code size](https://img.shields.io/github/languages/code-size/ChadCN/safe_json?logo=github&logoColor=white)](https://github.com/ChadCN/safe_json)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ChadCN/safe_json?tab=MIT-1-ov-file#)
 
@@ -33,12 +34,3 @@ SafeJsonLibrary.stackTraceCount = 1;
 ## Console Logs
 
 ![](https://github.com/ChadCN/safe_json/blob/main/assets/output.png)
-
-## Installation
-
-Add `safe_json` to your `pubspec.yaml` file:
-
-```yaml
-dependencies:
-  safe_json: ^1.0.7
-```
