@@ -33,3 +33,7 @@
 ## 1.0.10
 
 * Update README.md and fix workflow
+
+## 1.1.0
+
+* Update Documentation

@@ -16,7 +16,7 @@ The primary goal of this library is to find out bugs in the early stages of deve
 ## Examples
 
 ```dart
-  Map<String, dynamic> json = {
+Map<String, dynamic> json = {
   'age': '30.0',
   'articles': [
     'article1',
