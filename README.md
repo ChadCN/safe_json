@@ -5,7 +5,7 @@
 [![Code size](https://img.shields.io/github/languages/code-size/ChadCN/safe_json?logo=github&logoColor=white)](https://github.com/ChadCN/safe_json)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ChadCN/safe_json?tab=MIT-1-ov-file#)
 
-Small, easy to use null safety json decoding library. The primary goal of this library is to find out bugs in the early stages of development when parsing JSON values. 
+The primary goal of this library is to find out bugs in the early stages of development when get JSON values. 
 
 ## Features
 
@@ -16,6 +16,18 @@ Small, easy to use null safety json decoding library. The primary goal of this l
 ## Examples
 
 ```dart
+  Map<String, dynamic> json = {
+  'age': '30.0',
+  'articles': [
+    'article1',
+    'article2',
+  ],
+  'vehicles': [
+    {'make': 'Toyota', 'model': 'Camry'},
+    {'make': 'Honda', 'model': 'Accord'},
+  ],
+};
+
 final name = json.safeString('name', defaultValue: 'John');
 
 final age = json.safeInt('age');
