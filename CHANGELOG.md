@@ -37,3 +37,7 @@
 ## 1.1.0
 
 * Update Documentation
+
+## 1.1.1
+
+* Update README.md
