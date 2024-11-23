@@ -9,32 +9,81 @@ The primary goal of this library is to find out bugs in the early stages of deve
 
 ## Features
 
-- Safely parse JSON values to various data types.
-- Provide default values when parsing fails.
-- Error logging with file location.
+- Safely get JSON/Map/Dictionary values without crash.
+- Provide default values when fails.
+- Log Error with description and file location.
 
 ## Examples
 
 ```dart
-Map<String, dynamic> json = {
-  'age': '30.0',
-  'articles': [
-    'article1',
-    'article2',
-  ],
-  'vehicles': [
-    {'make': 'Toyota', 'model': 'Camry'},
-    {'make': 'Honda', 'model': 'Accord'},
-  ],
-};
+import 'package:safe_json/safe_json.dart';
 
-final name = json.safeString('name', defaultValue: 'John');
+class User {
+  final String name;
+  final int age;
+  final String school;
+  final List<String> articles;
+  final List<Vehicle> vehicles;
 
-final age = json.safeInt('age');
+  User(
+      {required this.name,
+        required this.age,
+        required this.school,
+        required this.articles,
+        required this.vehicles});
 
-final articles = json.safeList<String>('articles');
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User(
+      name: json.safeString('name', defaultValue: 'John'),
+      age: json.safeInt('age'),
+      school: json.safeString('school', defaultValue: 'MIT'),
+      articles: json.safeList<String>('articles'),
+      vehicles: json.safeList<Vehicle>('vehicles',
+          itemParse: (json) => Vehicle.fromJson(json)),
+    );
+  }
+}
 
-final vehicles = json.safeList<Vehicle>('vehicles', itemParse: (json) => Vehicle.fromJson(json));
+class Vehicle {
+  final String make;
+  final String model;
+
+  Vehicle({required this.make, required this.model});
+
+  factory Vehicle.fromJson(Map<String, dynamic> json) {
+    return Vehicle(
+      make: json.safeString('make'),
+      model: json.safeString('model'),
+    );
+  }
+
+  @override
+  String toString() {
+    return '$make $model';
+  }
+}
+
+void main() {
+  Map<String, dynamic> json = {
+    'age': '30.0',
+    'articles': [
+      'article1',
+      'article2',
+    ],
+    'vehicles': [
+      {'make': 'Toyota', 'model': 'Camry'},
+      {'make': 'Honda', 'model': 'Accord'},
+    ],
+  };
+
+  User user = User.fromJson(json);
+
+  print(user.name); // John
+  print(user.age); // 30
+  print(user.school); // MIT
+  print(user.articles); // [article1, article2]
+  print(user.vehicles); // [Toyota Camry, Honda Accord]
+}
 
 //set to true if want to disable error logging (usually in production)
 SafeJsonLibrary.skipLog = true; 
@@ -45,4 +94,12 @@ SafeJsonLibrary.stackTraceCount = 1;
 
 ## Console Logs
 
-![](https://github.com/ChadCN/safe_json/blob/main/assets/output.png)
+```console
+┌────────────────────────────────────────────────────────────────────────────────────────────────────
+│ ⚠️ json['name'] return default value
+├┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+│ value is null
+│ package:your-project-name/models/user_model.dart:22:19
+│ package:your-project-name/pages/home_page.dart:75:29
+└────────────────────────────────────────────────────────────────────────────────────────────────────
+```
